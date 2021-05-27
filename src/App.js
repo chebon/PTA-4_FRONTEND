@@ -8,6 +8,7 @@ import Patient from "./components/Patient";
 import PatientsList from "./components/PatientsList";
 import AddLocation from "./components/AddLocation";
 import Addreport from "./components/Addreport";
+import Locationreport from "./components/Locationreport";
 
 function App() {
   return (
@@ -20,11 +21,6 @@ function App() {
           <li className="nav-item">
             <Link to={"/"} className="nav-link">
               Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/add"} className="nav-link">
-              Add Patient
             </Link>
           </li>
 
@@ -49,6 +45,7 @@ function App() {
           <Route exact path="/location" component={AddLocation} />
           <Route exact path="/report" component={Addreport} />
           <Route path="/diagnosis/create/:id" component={Patient} />
+          <Route path="/report/location/:id" component={Locationreport} />
         </Switch>
       </div>
     </Router>

@@ -1,53 +1,69 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import axios from 'axios';
 
 const Addreport = () => {
 
-    const [books, setBooks] = useState(null);
+  const [books, setBooks, status] = useState(null);
 
-    const apiURL = "https://www.anapioficeandfire.com/api/books?pageSize=30";
+  const apiURL = "http://localhost:3000/summary";
 
-    const fetchData = async () => {
-        const response = await axios.get(apiURL)
+  const fetchData = async () => {
+    const response = await axios.post(apiURL)
 
-        setBooks(response.data) 
-    }
-    useEffect(() => {
-        fetchData()
-      });
-    
- 
+    //let cleanData = Object.entries(response.data)
+    let cleanData = response.data
+
+    setBooks(cleanData)
+  }
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+
   return (
-    <div className="submit-form">
-     
-        <div>
-          
+    <div>
+
+      <div>
+
         <div className="books">
-        {books &&
-          books.map((book, index) => {
-            const cleanedDate = new Date(book.released).toDateString();
-            const authors = book.authors.join(', ');
 
-            return (
-              <div className="book" key={index}>
-                <h3>Book {index + 1}</h3>
-                <h2>{book.name}</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Location</th>
+                <th>knownHypertensitive</th>
+                <th>newHypertensitive</th>
+                <th>Known Diabetic</th>
+                <th>New Diabetic</th>
+                <th>DIABETIC AND HYPERTENSIVE</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            
+          {books &&
+            books.map((book, index) => {
 
-                <div className="details">
-                  <p>👨: {authors}</p>
-                  <p>📖: {book.numberOfPages} pages</p>
-                  <p>🏘️: {book.country}</p>
-                  <p>⏰: {cleanedDate}</p>
-                </div>
-              </div>
-            );
-          })}
+
+              return (
+                <tr>
+                <td><a href={"/report/location/"+book.location}>{book.location} </a></td>
+                <td>{book.info.knownHypertensitive}</td>
+                <td>{book.info.newHypertensitive}</td>
+                <td>{book.info.knownDiabetic}</td>
+                <td>{book.info.newDiabetic}</td>
+                <td>{book.info.newDiabetic}</td>
+              </tr>
+              );
+            })}
+            </tbody>
+          </table>
+        </div>
+
+
       </div>
 
-          
-        </div>
-      
     </div>
   );
 };
