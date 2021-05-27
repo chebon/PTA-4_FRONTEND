@@ -46,7 +46,8 @@ const Addreport = () => {
             books.map((book, index) => {
 
 
-              return (
+              return  (
+
                 <tr>
                 <td><a href={"/report/location/"+book.location}>{book.location} </a></td>
                 <td>{book.info.knownHypertensitive}</td>
