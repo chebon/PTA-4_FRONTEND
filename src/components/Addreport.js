@@ -49,7 +49,7 @@ const Addreport = () => {
               return  (
 
                 <tr>
-                <td><a href={"/report/location/"+book.location}>{book.location} </a></td>
+                <td><a href={"/report/location/"+book.location}>Location {book.location} </a></td>
                 <td>{book.info.knownHypertensitive}</td>
                 <td>{book.info.newHypertensitive}</td>
                 <td>{book.info.knownDiabetic}</td>

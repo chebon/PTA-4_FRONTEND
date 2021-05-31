@@ -57,7 +57,7 @@ const PatientsList = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by title"
+            placeholder="Search by Name"
             value={searchTitle}
             onChange={onChangeSearchTitle}
           />
@@ -95,7 +95,7 @@ const PatientsList = () => {
       <div className="col-md-6">
         {currentTutorial ? (
           <div>
-            <h4>Tutorial</h4>
+            <h4>Patient</h4>
             <div>
               <label>
                 <strong>Name:</strong>
